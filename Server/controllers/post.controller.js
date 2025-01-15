@@ -260,6 +260,66 @@ module.exports.notConstructiveAnymorePost = async (req,res) => {
     }
 }
 
+module.exports.notFunnyAnymorePost = async (req,res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send("Id inconnue :" + req.params.id)
+    try {
+        await postModel.findByIdAndUpdate(
+            req.params.id,
+            {
+                $pull: { funny: req.body.id},
+            },
+            {new:true},
+            (err) => {
+                if (err) return res.status(400).send(err)
+            }
+        )
+        await userModel.findByIdAndUpdate(
+            req.body.id,
+            {
+                $pull: {findFunny: req.params.id},
+            },
+            {news: true},
+            (err,docs) => {
+                if (!err) res.send(docs)
+                return res.status(400).send(err)
+            }
+        )
+    } catch (error) {
+        return res.status(400).send(error)
+    }
+}
+
+module.exports.notUnpertinentAnymorePost = async (req,res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send("Id inconnue :" + req.params.id)
+    try {
+        await postModel.findByIdAndUpdate(
+            req.params.id,
+            {
+                $pull: { unpertinent: req.body.id},
+            },
+            {new:true},
+            (err) => {
+                if (err) return res.status(400).send(err)
+            }
+        )
+        await userModel.findByIdAndUpdate(
+            req.body.id,
+            {
+                $pull: {findUnpertinent: req.params.id},
+            },
+            {news: true},
+            (err,docs) => {
+                if (!err) res.send(docs)
+                return res.status(400).send(err)
+            }
+        )
+    } catch (error) {
+        return res.status(400).send(error)
+    }
+}
+
 module.exports.commentPost = (req,res) => {
     if (!ObjectId.isValid(req.params.id))
         return res.status(400).send("Id inconnue :" + req.params.id)
@@ -314,7 +374,7 @@ module.exports.deleteCommentPost = (req,res) => {
         return res.status(400).send("Id inconnue :" + req.params.id)
     
     try {
-        return articleModel.findByIdAndUpdate(
+        return postModel.findByIdAndUpdate(
             req.params.id,
             {
                 $pull: {
