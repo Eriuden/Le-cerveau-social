@@ -1,0 +1,25 @@
+const router = require("express").Router()
+const postController = require("../Controllers/post.controller")
+const uploadController = require("../Controllers/upload.controller")
+const multer = require("multer")
+const upload = multer()
+
+router.get("/", postController.readPost)
+router.put("/:id", postController.updatePost)
+router.delete("/:id", postController.deletePost)
+router.post("/", upload.single("file", postController.createPost))
+router.post("/upload-postPic", upload.single("file"), uploadController.uploadPostPic)
+router.patch("/find-post-interesting/:id", postController.findPostInteresting)
+router.patch("/find-post-constructive/:id", postController.findPostConstructive)
+router.patch("/find-post-funny/:id", postController.findPostFunny)
+router.patch("/find-post-unpertinent/:id", postController.findPostUnpertinent)
+router.patch("/find-post-interesting-anymore/:id", postController.notInterestingAnymorePost)
+router.patch("/find-post-constructive-anymore/:id", postController.notConstructiveAnymorePost)
+router.patch("/find-post-funny-anymore/:id", postController.notFunnyAnymorePost)
+router.patch("/find-post-unpertinent-anymore/:id", postController.notUnpertinentAnymorePost)
+
+router.patch("/comment-post/:id", postController.commentPost)
+router.patch("/edit-comment-post/:id", postController.editCommentPost)
+router.patch("/delete-comment-post/:id", postController.deleteCommentPost)
+
+module.exports = router
