@@ -1,4 +1,4 @@
-export const inscriptionModal = () => {
+export const InscriptionModal = () => {
   return (
     <div>inscriptionModal</div>
   )
