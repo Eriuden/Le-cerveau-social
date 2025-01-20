@@ -3,13 +3,17 @@ import axios from "axios";
 export const GET_POSTS = "GET_POSTS"
 export const GET_ALLPOSTS= "GET_ALLPOSTS"
 export const ADD_POST = "ADD_POST"
+export const UNLIKE_POST = "UNLIKE_POST"
+export const UPDATE_POST = "UPDATE_POST"
+export const DELETE_POST= "DELETE_POST"
 export const FIND_POST_INTERESTING = "FIND_POST_INTERESTING"
 export const FIND_POST_CONSTRUCTIVE = "FIND_POST_CONSTRUCTIVE"
 export const FIND_POST_FUNNY = "FIND_POST_FUNNY"
 export const FIND_POST_UNPERTINENT = "FIND_POST_UNPERTINENT"
-export const UNLIKE_POST = "UNLIKE_POST"
-export const UPDATE_POST = "UPDATE_POST"
-export const DELETE_POST= "DELETE_POST"
+export const FIND_INTERESTING_ANYMORE = "FIND_INTERESTING_ANYMORE"
+export const FIND_CONSTRUCTIVE_ANYMORE = "FIND_CONSTRUCTIVE_ANYMORE"
+export const FIND_FUNNY_ANYMORE = "FIND_FUNNY_ANYMORE"
+export const FIND_UNPERTINENT_ANYMORE = "FIND_UNPERTINENT_ANYMORE"
 
 //section comments
 export const ADD_COMMENT= "ADD_COMMENT"
@@ -33,7 +37,7 @@ type postProps = {
 }
 
 type commentProps = {
-    articleId: string,
+    postId: string,
     commentId: string,
     commenterId: string,
     commenterName: string,
@@ -157,65 +161,107 @@ export const findPostUnpertinent = ({postId,userId}: postProps) => {
     }
 }
 
-export const unLikePost = ({postId,userId}: postProps) => {
+export const interestingAnymore = ({postId,userId}: postProps) => {
     return(dispatch:any) => {
         return axios({
             method:'patch',
-            url: `${process.env.REACT_APP_API_URL}/api/post/unlike-post/` + postId,
+            url: `${process.env.REACT_APP_API_URL}/api/post/not-interesting-anymore/` + postId,
             data: { id: userId}
         })
         .then(() => {
-            dispatch({type: UNLIKE_POST, payload: {postId, userId}})
+            dispatch({type: FIND_INTERESTING_ANYMORE, payload: {postId, userId}})
+        })
+        .catch((err) => console.log(err))
+    }
+}
+
+export const constructiveAnymore = ({postId,userId}: postProps) => {
+    return(dispatch:any) => {
+        return axios({
+            method:'patch',
+            url: `${process.env.REACT_APP_API_URL}/api/post/not-constructive-anymore/` + postId,
+            data: { id: userId}
+        })
+        .then(() => {
+            dispatch({type: FIND_CONSTRUCTIVE_ANYMORE, payload: {postId, userId}})
+        })
+        .catch((err) => console.log(err))
+    }
+}
+
+export const funnyAnymore = ({postId,userId}: postProps) => {
+    return(dispatch:any) => {
+        return axios({
+            method:'patch',
+            url: `${process.env.REACT_APP_API_URL}/api/post/not-funny-anymore/` + postId,
+            data: { id: userId}
+        })
+        .then(() => {
+            dispatch({type: FIND_FUNNY_ANYMORE, payload: {postId, userId}})
+        })
+        .catch((err) => console.log(err))
+    }
+}
+
+export const unpertinentAnymore = ({postId,userId}: postProps) => {
+    return(dispatch:any) => {
+        return axios({
+            method:'patch',
+            url: `${process.env.REACT_APP_API_URL}/api/post/not-unpertinent-anymore/` + postId,
+            data: { id: userId}
+        })
+        .then(() => {
+            dispatch({type: FIND_UNPERTINENT_ANYMORE, payload: {postId, userId}})
         })
         .catch((err) => console.log(err))
     }
 }
 
 
-export const addComment = (postId, commenterId, text, commenterPseudo) => {
-    return (dispatch) => {
+export const addComment = ({postId, commenterId, text, commenterName}: commentProps) => {
+    return (dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
-            data:{commenterId, text, commenterPseudo},
+            data:{commenterId, text, commenterName},
         })
-        .then((res) => {
+        .then(() => {
             dispatch({ type: ADD_COMMENT, payload: {postId} })
         })
         .catch((err) => console.log(err))
     }
 }
 
-export const editComment = (postId, commentId, text) => {
-    return (dispatch) => {
+export const editComment = ({postId, commentId, text}:commentProps) => {
+    return (dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
             data:{commentId, text},
         })
-        .then((res) => {
+        .then(() => {
             dispatch({ type: EDIT_COMMENT, payload: {postId, commentId, text} })
         })
         .catch((err) => console.log(err))
     }
 }
 
-export const deleteComment = (postId, commentId) => {
-    return (dispatch) => {
+export const deleteComment = ({postId, commentId}:commentProps) => {
+    return (dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
             data:{commentId},
         })
-        .then((res) => {
+        .then(() => {
             dispatch({ type: DELETE_COMMENT, payload: {postId, commentId} })
         })
         .catch((err) => console.log(err))
     }
 }
 
-export const getTrends = (sortedArray) => {
-    return (dispatch) => {
+export const getTrends = (sortedArray:any) => {
+    return (dispatch:any) => {
         dispatch({type: GET_TRENDS, payload: sortedArray})
     }
 }
