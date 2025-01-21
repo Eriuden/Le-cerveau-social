@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const GET_POSTS = "GET_POSTS"
+export const GET_POST = "GET_POST"
 export const GET_ALLPOSTS= "GET_ALLPOSTS"
 export const ADD_POST = "ADD_POST"
 export const UNLIKE_POST = "UNLIKE_POST"
@@ -54,7 +54,7 @@ export const getPosts = (num:number) => {
             //avec slice, il coupe ce qui est après 0 et num
             //Ainsi là, il affichera un nombre maximum de posts
             const array = res.data.slice(0, num)
-            dispatch ({type: GET_POSTS, payload: array})
+            dispatch ({type: GET_POST, payload: array})
             dispatch ({type:GET_ALLPOSTS, payload: res.data})
         })
         .catch((err) => {
