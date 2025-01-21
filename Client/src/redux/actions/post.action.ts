@@ -3,7 +3,6 @@ import axios from "axios";
 export const GET_POST = "GET_POST"
 export const GET_ALLPOSTS= "GET_ALLPOSTS"
 export const ADD_POST = "ADD_POST"
-export const UNLIKE_POST = "UNLIKE_POST"
 export const UPDATE_POST = "UPDATE_POST"
 export const DELETE_POST= "DELETE_POST"
 export const FIND_POST_INTERESTING = "FIND_POST_INTERESTING"
