@@ -30,7 +30,7 @@ export const ConstrucButton = (postProps:any) => {
         uid === null && (
             <Popup trigger= {<img src="./img/icons/heart.svg" alt="like" />} position= {
                 ['bottom center', 'bottom right', 'bottom left']} closeOnDocumentClick >
-                    <div>Vous devez être connecté pour liker un post</div>
+                    <div>Vous devez être connecté pour réagir à un post</div>
             </Popup> 
         )}
         {
