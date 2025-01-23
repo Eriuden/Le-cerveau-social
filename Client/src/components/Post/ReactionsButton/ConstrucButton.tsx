@@ -20,7 +20,7 @@ export const ConstrucButton = (postProps:any) => {
     }
 
     useEffect(() => {
-        if (postProps.interesting.includes(uid)) setConstructive(true)
+        if (postProps.constructive.includes(uid)) setConstructive(true)
         else setConstructive(false)
     }, [uid, postProps.constructive, constructive])
 
