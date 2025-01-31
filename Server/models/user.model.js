@@ -35,6 +35,14 @@ const userSchema = new mongoose.Schema(
             minlength: 6
         },
 
+        followers: {
+            type: [String]
+        },
+        
+        following: {
+            type: [String]
+        },
+
         findInteresting: {
             type: [String]
         },

@@ -50,3 +50,60 @@ module.exports.deleteUser = async (req, res) => {
         return res.status(500).json({message: error})
     }
 }
+
+module.exports.follow = async (req,res) => {
+    if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.body.idToFollow))
+        return res.status(400).send('ID unknown : ' + req.params.id)
+
+    try {
+        await userModel.findByIdAndUpdate(
+            req.params.id,
+            { $addToSet: { following: req.body.idToFollow }},
+            { new: true, upsert: true},
+            (err, docs) => {
+                if (!err) res.status(201).json(docs);
+                else return res.status(400).json(err)
+            }
+        )
+        await userModel.findByIdAndUpdate(
+            req.body.idToFollow,
+            { $addToSet: { followers: req.params.id }},
+            { new: true, upsert: true},
+            (err, docs) => {
+                
+                if (err) 
+                return res.status(400).json(err)
+            }
+        )  
+    } catch (err) {
+        return res.status(500).json ({ message: err})
+    }
+}
+
+module.exports.unFollow = async (req,res) => {
+    if (!ObjectId.isValid(req.params.id) || !ObjectId.isValid(req.body.idToFollow))
+        return res.status(400).send('ID unknown : ' + req.params.id)
+
+    try {
+        await userModel.findByIdAndUpdate(
+            req.params.id,
+            { $pull: { following: req.body.idToUnfollow }},
+            { new: true, upsert: true},
+            (err, docs) => {
+                if (!err) res.status(201).json(docs);
+                else return res.status(400).json(err)
+            }
+        )
+        await userModel.findByIdAndUpdate(
+            req.body.idToUnfollow,
+            { $pull: { followers: req.params.id }},
+            { new: true, upsert: true},
+            (err) => {
+                if (err) 
+                return res.status(400).json(err)
+            }
+        ) 
+    } catch (err) {
+        return res.status(500).json ({ message: err})
+    }
+}
