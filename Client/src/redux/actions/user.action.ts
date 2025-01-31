@@ -6,8 +6,10 @@ export const UPLOAD_PICTURE = "UPLOAD_PICTURE"
 export const GET_USER_ERRORS = "GET_USER_ERRORS"
 export const UPDATE_PASSWORD = "UPDATE_PASSWORD"
 export const DELETE_USER = "DELETE_USER"
+export const FOLLOW_USER= "FOLLOW_USER"
+export const UNFOLLOW_USER= "UNFOLLOW_USER"
 
-type userProps ={
+type userProps = {
     userId: string,
     name: string,
     email: string,
@@ -83,5 +85,33 @@ export const deleteUser = ({userId, name, email, adress, password} : userProps) 
         .then(()=> {
             dispatch({type: DELETE_USER, payload: {userId}})
         })
+    }
+}
+
+export const followUser = (followerId:string, idToFollow:string) => {
+    return (dispatch:any) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/follow/` + followerId,
+            data: { idToFollow },
+        })
+            .then (() => {
+                dispatch({ type :FOLLOW_USER, payload:{idToFollow}})
+            })
+            .catch((err) => console.log(err))
+    }
+}
+
+export const unfollowUser = (followerId:string, idToUnfollow:string) => {
+    return (dispatch:any) => {
+        return axios({
+            method:"patch",
+            url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
+            data: { idToUnfollow },
+        })
+            .then (() => {
+                dispatch({ type :UNFOLLOW_USER, payload:{idToUnfollow}})
+            })
+            .catch((err) => console.log(err))
     }
 }
