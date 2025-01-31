@@ -18,5 +18,7 @@ router.get("/", userController.getAllUsers)
 router.get("/:id", userController.getUser)
 router.put("/:id", userController.updateUser)
 router.delete("/:id", userController.deleteUser)
+router.patch('/follow/:id', userController.follow)
+router.patch('/unfollow/:id', userController.unFollow)
 
 module.exports = router
