@@ -1,7 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { UidContext } from './components/AppContext'
 import { Profile } from './pages/Profile'
 import { Trending } from './pages/Trending'
 import { Home }  from './pages/Home'
@@ -38,16 +37,14 @@ function App() {
 
   return (
     <>
-      <div>  
-        <UidContext.Provider value ={uid}>
+      <div>         
         Test
         <Header />
         <Routes>
-          <Route exact path="/" element={<Home/>}/>
-          <Route exact path="/profil" element={<Profile/>}/>
-          <Route exact path="/trending" element={<Trending/>}/>
-        </Routes>
-        </UidContext.Provider>            
+          <Route path="/" element={<Home/>}/>
+          <Route path="/profil" element={<Profile/>}/>
+          <Route path="/trending" element={<Trending/>}/>
+        </Routes>           
       </div>
     </> 
   )
