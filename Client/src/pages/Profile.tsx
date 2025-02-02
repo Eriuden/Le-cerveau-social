@@ -1,9 +1,8 @@
-export const Home = () => {
+export const Profile = () => {
   return (
     <div>
       
     </div>
   )
 }
-
 
