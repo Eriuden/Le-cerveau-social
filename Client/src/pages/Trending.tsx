@@ -1,7 +1,7 @@
 
 import { useSelector } from "react-redux";
 import { UidContext } from "../components/AppContext";
-import PostCard from "../components/Post/PostCard"
+import {PostCard} from "../components/Post/PostCard"
 import Trends from "../components/Trend";
 import { isEmpty } from "../components/Utils";
 import FriendHint from "../components/Profile/FriendHint";
