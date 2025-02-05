@@ -7,7 +7,7 @@ import { ConstrucButton } from "./ReactionsButton/ConstrucButton";
 import { FunnyButton } from "./ReactionsButton/FunnyButton";
 import { UnpertButton } from "./ReactionsButton/UnpertButton";
 import DeletePostCard from "./DeletePostCard";
-import CardComment from "../Post/CommentCard"
+import {CardComment} from "../Post/CommentCard"
 import { dateParser, isEmpty } from "../Utils";
 
 type postPropsType = {
@@ -29,7 +29,7 @@ type postPropsType = {
   }]
 }
 
-export default function Card( postProps: postPropsType ) {
+export const PostCard = ( postProps: postPropsType ) => {
   const usersData = useSelector((state:any) => state.usersReducer);
   const userData = useSelector((state:any) => state.userReducer);
   const dispatch = useDispatch();

@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { addComment, getPosts } from "../../redux/actions/post.action"
 import FollowHandler from "../Profile/FollowHandler"
 import { isEmpty, timeStampParser } from "../Utils";
-import EditDeleteComment from "./EditDeleteComment";
+import { EditDeleteComment } from "./EditDeleteComment";
 
-export default function CardComment( post:any) {
+export const CardComment = ( post:any) => {
   
   type appDispatch = () => any
 
@@ -61,7 +61,7 @@ export default function CardComment( post:any) {
                 <span>{timeStampParser(comment.timeStamp)}</span>
               </div>
               <p>{comment.text}</p>
-              <EditDeleteComment comment={comment} postId={post._id} />
+              <EditDeleteComment props={comment} postId={post._id} />
             </div>
           </div>
         );

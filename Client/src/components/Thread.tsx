@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../redux/actions/post.action";
 import { useDispatch, useSelector } from "react-redux";
-import {PostCard} from "../components/Post/PostCard"
+import { PostCard } from "./Post/PostCard";
 import { isEmpty } from "./Utils";
 
 export default function Thread() {
@@ -37,7 +37,7 @@ export default function Thread() {
       <ul>
         {!isEmpty(posts[0]) &&
           posts.map((post:any) => {
-            return <PostCard postCardProps={post} key={post._id} />;
+            return <PostCard postProps={post} key={post._id} />;
           })}
       </ul>
     </div>
