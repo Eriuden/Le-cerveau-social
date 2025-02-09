@@ -5,6 +5,12 @@ import Trends from "../components/Trend";
 import FriendHint from "../components/Profile/FriendHint";
 import { useContext } from "react";
 
+/*
+A rajouter ce qui concerne les conseils
+Il faudra donc ajouter ici un bouton de création de conseils
+c'est dans le menu qu'il faudra la liste des conseils
+*/
+
 export default function Home() {
   const uid = useContext(UidContext);
   return (
