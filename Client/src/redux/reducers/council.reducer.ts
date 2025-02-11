@@ -14,12 +14,14 @@ export const CouncilReducer = (state = initialState, action: any) => {
                 if (council.id === action.payload.councilId) {
                     return {
                         ...council,
-                        message: action.payload.message
+                        name: action.payload.name,
+                        banner: action.payload.banner,
+                        theme: action.payload.theme,
                     }
                 } else return council
              })
+
         case DELETE_COUNCIL:
-            case DELETE_COUNCIL:
             return state.filter((council:any)=> council.id !== action.payload.councilId)
 
         default:
