@@ -11,6 +11,10 @@ const CouncilSchema = new mongoose.Schema(
             type: String,
             required: true
         } ,
+        banner:{
+            type: String,
+            required:true
+        }, 
         theme:{
             type: String,
             required: true

@@ -8,24 +8,20 @@ export const DELETE_POST= "DELETE_COUNCIL"
 
 export const GET_COUNCIL_ERRORS = "GET_COUNCIL_ERRORS"
 
-type postProps = {
-    postId: string,
-    picture: string,
-    message: string,
-    video: string,
-    userId: string,
-    findInteresting:[string],
-    findConstructive:[string],
-    findFunny:[string],
-    findUnpertinent:[string]
+type councilProps = {
+    councilId: string,
+    name: string,
+    banner: string,
+    theme: string,
+    presidentId: string,
 }
 
 
 
-export const getPosts = (num:number) => {
+export const getCouncils = (num:number) => {
     return (dispatch:any) => {
         return axios
-        .get(`${process.env.REACT_APP_API_URL}api/post/`)
+        .get(`${process.env.REACT_APP_API_URL}api/council/`)
         .then ((res) => {
             
             const array = res.data.slice(0, num)
@@ -38,10 +34,10 @@ export const getPosts = (num:number) => {
     }
 }
 
-export const addPost = (data:any) => {
+export const createCouncil = (data:any) => {
     return (dispatch:any) => {
         return axios
-        .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
+        .post(`${process.env.REACT_APP_API_URL}api/council/`, data)
         .then((res) => {
             if (res.data.errors) {
                 dispatch( {type: GET_COUNCIL_ERRORS, payload: res.data.errors })
@@ -52,29 +48,29 @@ export const addPost = (data:any) => {
     }
 }
 
-export const updatePost = ({postId, message} : postProps) => {
+export const updateCouncil = ({councilId, name, banner, theme} : councilProps) => {
     return (dispatch:any) => {
         return axios({
             method: 'put',
-            url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
-            data:{message},
+            url: `${process.env.REACT_APP_API_URL}api/post/${councilId}`,
+            data:{name, banner, theme},
         })
         .then(() => {
-            dispatch({ type: UPDATE_POST, payload: {message, postId} })
+            dispatch({ type: UPDATE_POST, payload: {councilId, name, banner, theme} })
         })
         .catch((err) => console.log(err))
     }
 }
 
-export const deletePost = ({postId, message}: postProps) => {
+export const deletePost = ({councilId, name, banner, theme}: councilProps) => {
     return (dispatch:any) => {
         return axios({
             method: 'delete',
-            url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
-            data:{message},
+            url: `${process.env.REACT_APP_API_URL}api/post/${councilId}`,
+            data:{name, banner, theme},
         })
         .then(() => {
-            dispatch({ type: DELETE_POST, payload: {postId} })
+            dispatch({ type: DELETE_POST, payload: {councilId} })
         })
         .catch((err) => console.log(err))
     }
