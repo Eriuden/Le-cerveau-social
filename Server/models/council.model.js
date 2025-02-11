@@ -44,7 +44,17 @@ const CouncilSchema = new mongoose.Schema(
             ],
             required: true,
         },
+        member: {
+            type: [
+                {
+                    memberId: String,
+                    memberName: String,
+                }
+            ]
+        }
     },
+
+    
     {
         timestamps: true,
     }
