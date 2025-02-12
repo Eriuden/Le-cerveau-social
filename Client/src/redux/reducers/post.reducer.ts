@@ -3,6 +3,7 @@ FIND_POST_FUNNY, FIND_POST_UNPERTINENT, FIND_INTERESTING_ANYMORE, FIND_CONSTRUCT
 FIND_FUNNY_ANYMORE, FIND_UNPERTINENT_ANYMORE, EDIT_COMMENT, DELETE_COMMENT } from "../actions/post.action";
 
 const initialState:any = {}
+
 export const postReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case GET_POST:
