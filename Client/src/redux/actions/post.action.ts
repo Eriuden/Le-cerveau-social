@@ -45,8 +45,7 @@ type commentProps = {
 
 
 
-export const getPosts = (num:number) => {
-    return (dispatch:any) => {
+export const getPosts = (num:number, dispatch:any) => {  
         return axios
         .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then ((res) => {
@@ -59,11 +58,9 @@ export const getPosts = (num:number) => {
         .catch((err) => {
             console.log(err)
         })
-    }
 }
 
-export const addPost = (data:any) => {
-    return (dispatch:any) => {
+export const addPost = (data:any, dispatch:any) => {   
         return axios
         .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
         .then((res) => {
@@ -73,11 +70,9 @@ export const addPost = (data:any) => {
                 dispatch({ type: GET_POST_ERRORS, payload: ""})
             }
         })
-    }
 }
 
-export const updatePost = ({postId, message} : postProps) => {
-    return (dispatch:any) => {
+export const updatePost = ({postId, message} : postProps, dispatch:any) => {   
         return axios({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
@@ -87,7 +82,6 @@ export const updatePost = ({postId, message} : postProps) => {
             dispatch({ type: UPDATE_POST, payload: {message, postId} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
 export const deletePost = ({postId, message}: postProps) => {
