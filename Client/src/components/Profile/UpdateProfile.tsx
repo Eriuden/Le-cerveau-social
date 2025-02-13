@@ -1,6 +1,6 @@
 import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateUser } from '../../redux/actions/user.action
+import { updateUser } from '../../redux/actions/user.action'
 import {UploadProfileImg} from "./UploadProfileImg"
 import { dateParser } from '../Utils'
 import FollowHandler from './followHandler'
@@ -15,17 +15,15 @@ export default function UpdateProfil() {
     const [followersPopUp, setFollowersPopUp] = useState(false)
     const dispatch = useDispatch()
 
-  
-
     const handleUpdate = () => {
-      updateUser(userData._id, name, email, message, dispatch)
+      updateUser(userData, dispatch)
       setUpdateForm(false)
     }
 
   return (
     <div className="profil-container">
 
-        <h1> Profil de {userData.name}</h1>
+        <h1> Profil de {name}</h1>
 
         <div className="update-container">
 
@@ -53,7 +51,7 @@ export default function UpdateProfil() {
                 {
                   updateForm &&(
                   <>
-                    <textarea type="text" defaultValue={userData.name}onChange={(e) => setName(e.target.value)}>
+                    <textarea defaultValue={userData.name}onChange={(e) => setName(e.target.value)}>
                     </textarea>
                     <button onClick={handleUpdate}>Valider la modification</button>
                   </>
