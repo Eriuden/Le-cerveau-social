@@ -84,8 +84,7 @@ export const updatePost = ({postId, message} : postProps, dispatch:any) => {
         .catch((err) => console.log(err))
 }
 
-export const deletePost = ({postId, message}: postProps) => {
-    return (dispatch:any) => {
+export const deletePost = ({postId, message}: postProps, dispatch:any) => {
         return axios({
             method: 'delete',
             url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
@@ -95,11 +94,9 @@ export const deletePost = ({postId, message}: postProps) => {
             dispatch({ type: DELETE_POST, payload: {postId} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const findPostInteresting = ({postId,userId}: postProps) => {
-    return (dispatch:any) => {
+export const findPostInteresting = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-interesting/` + postId,
@@ -109,11 +106,9 @@ export const findPostInteresting = ({postId,userId}: postProps) => {
             dispatch({type: FIND_POST_INTERESTING, payload:{postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const findPostConstructive = ({postId,userId}: postProps) => {
-    return (dispatch:any) => {
+export const findPostConstructive = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-constructive/` + postId,
@@ -123,11 +118,9 @@ export const findPostConstructive = ({postId,userId}: postProps) => {
             dispatch({type: FIND_POST_CONSTRUCTIVE, payload:{postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const findPostFunny = ({postId,userId}: postProps) => {
-    return (dispatch:any) => {
+export const findPostFunny = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-funny/` + postId,
@@ -137,11 +130,9 @@ export const findPostFunny = ({postId,userId}: postProps) => {
             dispatch({type: FIND_POST_FUNNY, payload:{postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const findPostUnpertinent = ({postId,userId}: postProps) => {
-    return (dispatch:any) => {
+export const findPostUnpertinent = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-unpertinent/` + postId,
@@ -151,7 +142,6 @@ export const findPostUnpertinent = ({postId,userId}: postProps) => {
             dispatch({type: FIND_POST_UNPERTINENT, payload:{postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
 export const interestingAnymore = ({postId,userId}: postProps) => {
