@@ -144,8 +144,7 @@ export const findPostUnpertinent = ({postId,userId}: postProps, dispatch:any) =>
         .catch((err) => console.log(err))
 }
 
-export const interestingAnymore = ({postId,userId}: postProps) => {
-    return(dispatch:any) => {
+export const interestingAnymore = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-interesting-anymore/` + postId,
@@ -155,11 +154,9 @@ export const interestingAnymore = ({postId,userId}: postProps) => {
             dispatch({type: FIND_INTERESTING_ANYMORE, payload: {postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const constructiveAnymore = ({postId,userId}: postProps) => {
-    return(dispatch:any) => {
+export const constructiveAnymore = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-constructive-anymore/` + postId,
@@ -169,11 +166,9 @@ export const constructiveAnymore = ({postId,userId}: postProps) => {
             dispatch({type: FIND_CONSTRUCTIVE_ANYMORE, payload: {postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const funnyAnymore = ({postId,userId}: postProps) => {
-    return(dispatch:any) => {
+export const funnyAnymore = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-funny-anymore/` + postId,
@@ -183,11 +178,9 @@ export const funnyAnymore = ({postId,userId}: postProps) => {
             dispatch({type: FIND_FUNNY_ANYMORE, payload: {postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const unpertinentAnymore = ({postId,userId}: postProps) => {
-    return(dispatch:any) => {
+export const unpertinentAnymore = ({postId,userId}: postProps, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-unpertinent-anymore/` + postId,
@@ -197,12 +190,10 @@ export const unpertinentAnymore = ({postId,userId}: postProps) => {
             dispatch({type: FIND_UNPERTINENT_ANYMORE, payload: {postId, userId}})
         })
         .catch((err) => console.log(err))
-    }
 }
 
 
-export const addComment = ({postId, commenterId, text, commenterName}: commentProps) => {
-    return (dispatch:any) => {
+export const addComment = ({postId, commenterId, text, commenterName}: commentProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
@@ -212,11 +203,9 @@ export const addComment = ({postId, commenterId, text, commenterName}: commentPr
             dispatch({ type: ADD_COMMENT, payload: {postId} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const editComment = ({postId, commentId, text}:commentProps) => {
-    return (dispatch:any) => {
+export const editComment = ({postId, commentId, text}:commentProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
@@ -226,11 +215,9 @@ export const editComment = ({postId, commentId, text}:commentProps) => {
             dispatch({ type: EDIT_COMMENT, payload: {postId, commentId, text} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const deleteComment = ({postId, commentId}:commentProps) => {
-    return (dispatch:any) => {
+export const deleteComment = ({postId, commentId}:commentProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
@@ -240,11 +227,8 @@ export const deleteComment = ({postId, commentId}:commentProps) => {
             dispatch({ type: DELETE_COMMENT, payload: {postId, commentId} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const getTrends = (sortedArray:any) => {
-    return (dispatch:any) => {
+export const getTrends = (sortedArray:any, dispatch:any) => {
         dispatch({type: GET_TRENDS, payload: sortedArray})
-    }
 }
