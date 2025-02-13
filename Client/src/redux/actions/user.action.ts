@@ -84,8 +84,7 @@ export const deleteUser = ({userId, name, email, adress, password} : userProps) 
     }
 }
 
-export const followUser = (followerId:string, idToFollow:string) => {
-    return (dispatch:any) => {
+export const followUser = (followerId:string, idToFollow:string, dispatch: any) => {   
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/follow/` + followerId,
@@ -95,11 +94,9 @@ export const followUser = (followerId:string, idToFollow:string) => {
                 dispatch({ type :FOLLOW_USER, payload:{idToFollow}})
             })
             .catch((err) => console.log(err))
-    }
 }
 
-export const unfollowUser = (followerId:string, idToUnfollow:string) => {
-    return (dispatch:any) => {
+export const unfollowUser = (followerId:string, idToUnfollow:string, dispatch: any) => {  
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/user/unfollow/` + followerId,
@@ -109,5 +106,4 @@ export const unfollowUser = (followerId:string, idToUnfollow:string) => {
                 dispatch({ type :UNFOLLOW_USER, payload:{idToUnfollow}})
             })
             .catch((err) => console.log(err))
-    }
 }
