@@ -31,8 +31,7 @@ export const getCouncils = (num:number, dispatch:any) => {
         })  
 }
 
-export const createCouncil = (data:any) => {
-    return (dispatch:any) => {
+export const createCouncil = (data:any, dispatch:any) => {  
         return axios
         .post(`${process.env.REACT_APP_API_URL}api/council/`, data)
         .then((res) => {
@@ -42,11 +41,9 @@ export const createCouncil = (data:any) => {
                 dispatch({ type: GET_COUNCIL_ERRORS, payload: ""})
             }
         })
-    }
 }
 
-export const updateCouncil = ({councilId, name, banner, theme} : councilProps) => {
-    return (dispatch:any) => {
+export const updateCouncil = ({councilId, name, banner, theme} : councilProps, dispatch:any) => {   
         return axios({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/council/${councilId}`,
@@ -56,11 +53,9 @@ export const updateCouncil = ({councilId, name, banner, theme} : councilProps) =
             dispatch({ type: UPDATE_COUNCIL, payload: {councilId, name, banner, theme} })
         })
         .catch((err) => console.log(err))
-    }
 }
 
-export const deleteCouncil = ({councilId, name, banner, theme}: councilProps) => {
-    return (dispatch:any) => {
+export const deleteCouncil = ({councilId, name, banner, theme}: councilProps, dispatch:any) => {  
         return axios({
             method: 'delete',
             url: `${process.env.REACT_APP_API_URL}api/council/${councilId}`,
@@ -70,5 +65,4 @@ export const deleteCouncil = ({councilId, name, banner, theme}: councilProps) =>
             dispatch({ type: DELETE_COUNCIL, payload: {councilId} })
         })
         .catch((err) => console.log(err))
-    }
 }
