@@ -11,7 +11,7 @@ export const CouncilList = () => {
 
   const loadMore = () => {
     if (window.innerHeight + document.documentElement.scrollTop + 1 >
-      document.scrollingElement.scrollHeight)
+      document.scrollingElement!.scrollHeight)
       {
         setLoadCard(true)
       } else {
