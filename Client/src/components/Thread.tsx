@@ -14,7 +14,7 @@ export default function Thread() {
     
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >
-      document.scrollingElement.scrollHeight
+      document.scrollingElement!.scrollHeight
     ) {
       setLoadPost(true);
     }
@@ -23,9 +23,9 @@ export default function Thread() {
   useEffect(() => {
     
     if (loadPost) {
-      dispatch(getPosts(count));
+      getPosts(count, dispatch);
       setLoadPost(false);
-      setCount((prevCount) => setCount(prevCount + 5));
+      setCount(count + 5);
     }
 
     window.addEventListener("scroll", loadMore);
