@@ -18,20 +18,17 @@ type councilProps = {
 
 
 
-export const getCouncils = (num:number) => {
-    return (dispatch:any) => {
+export const getCouncils = (num:number, dispatch:any) => {   
         return axios
         .get(`${process.env.REACT_APP_API_URL}api/council/`)
-        .then ((res) => {
-            
+        .then ((res) => {           
             const array = res.data.slice(0, num)
             dispatch ({type: GET_COUNCIL, payload: array})
             dispatch ({type:GET_ALL_COUNCILS, payload: res.data})
         })
         .catch((err) => {
             console.log(err)
-        })
-    }
+        })  
 }
 
 export const createCouncil = (data:any) => {

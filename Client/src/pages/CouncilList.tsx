@@ -14,12 +14,14 @@ export const CouncilList = () => {
       document.scrollingElement.scrollHeight)
       {
         setLoadCard(true)
+      } else {
+        setLoadCard(false)
       }
   }
 
   useEffect(()=> {
     if (loadCard) {
-      dispatch(getCouncils(count))
+      getCouncils(count, dispatch)
       setCount(count + 10)
     }
     window.addEventListener("scroll", loadMore)
