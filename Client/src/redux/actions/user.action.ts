@@ -41,8 +41,7 @@ export const updateUser = ({userId, name, adress, email} : userProps) => {
     }
 }
 
-export const uploadPicture = (data: any, id: string) => {
-    return (dispatch: any) => {
+export const uploadPicture = (data: any, id: string, dispatch:any) => {
         return axios 
             .post(`${process.env.REACT_APP_API_URL}api/user/upload-userPic`, data)
             .then((res)=> {
@@ -57,8 +56,7 @@ export const uploadPicture = (data: any, id: string) => {
                     })
                 }
             })
-            .catch((err) => console.log(err))
-    }
+            .catch((err) => console.log(err))   
 }
 
 export const updatePassword = (userId: string, password: string) => {

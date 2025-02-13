@@ -1,24 +1,24 @@
 import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../redux/actions/user.action
-import UploadProfileImg from "./UploadProfileImg"
+import {UploadProfileImg} from "./UploadProfileImg"
 import { dateParser } from '../Utils'
 import FollowHandler from './followHandler'
 
 export default function UpdateProfil() {
-  const [name, setName] = useState('')
-  const [updateForm, setUpdateForm] = useState(false)
-
-    const userData = useSelector((state:any) => state.userReducer)
+    const userData = useSelector((state: any) => state.userReducer)
     const usersData = useSelector((state:any) => state.usersReducer)
     const error = useSelector((state:any) => state.errorReducer.userError)
-    const dispatch = useDispatch
-
+    const [name, setName] = useState(userData.name)
+    const [updateForm, setUpdateForm] = useState(false)  
     const [followingPopUp, setFollowingPopUp] = useState(false)
     const [followersPopUp, setFollowersPopUp] = useState(false)
+    const dispatch = useDispatch()
+
+  
 
     const handleUpdate = () => {
-      dispatch(updateUser(userData._id, name, email, message))
+      updateUser(userData._id, name, email, message, dispatch)
       setUpdateForm(false)
     }
 

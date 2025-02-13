@@ -13,7 +13,7 @@ export const UploadProfileImg = () => {
         data.append("name", userData.pseudo)
         data.append("userId", userData._id)
         data.append("file", file)
-        dispatch(uploadPicture(data, userData._id))
+        uploadPicture(data, userData._id, dispatch)
     }
   return (
     <form action="" onSubmit={handlePicture} className="upload-pic">
