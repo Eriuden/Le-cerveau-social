@@ -11,7 +11,7 @@ type propsType = {
 
 export default function DeletePostCard(props:propsType) {
   const dispatch = useDispatch()
-  const deleteQuote = () => dispatch(deletePost(props.id))
+  const deleteQuote = () => deletePost(props._id, dispatch)
   return (
     <div 
       onClick={() => {
