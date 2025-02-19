@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addPost, getPosts } from "../../redux/actions/post.action"
 import { isEmpty, timeStampParser } from '../Utils'
 
-export default function NewPostForm() {
+export default function NewPostForm(post: any) {
     const [isLoading, setIsLoading] = useState(true)
     const [message, setMessage] = useState("")
     const [picture, setPicture] = useState("")
@@ -28,8 +28,8 @@ export default function NewPostForm() {
               if (file)data.append("file", file)
               data.append('video', video)
               
-              await dispatch(addPost(data))
-              dispatch(getPosts())
+              await addPost(data, dispatch)
+              getPosts(post, dispatch)
               cancelPost()
               
             } else {

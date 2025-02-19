@@ -72,14 +72,14 @@ export const addPost = (data:any, dispatch:any) => {
         })
 }
 
-export const updatePost = ({postId, message} : postProps, dispatch:any) => {   
+export const updatePost = ({postId} : postProps, updatedMessage: string, dispatch:any) => {   
         return axios({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
-            data:{message},
+            data:{updatedMessage},
         })
         .then(() => {
-            dispatch({ type: UPDATE_POST, payload: {message, postId} })
+            dispatch({ type: UPDATE_POST, payload: {updatedMessage, postId} })
         })
         .catch((err) => console.log(err))
 }
