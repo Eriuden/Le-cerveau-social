@@ -205,7 +205,7 @@ export const addComment = (postId: string , {commenterId, text, commenterName}: 
         .catch((err) => console.log(err))
 }
 
-export const editComment = ({postId, commentId, text}:commentProps, dispatch:any) => {
+export const editComment = (postId:string, commentId:string, text:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
@@ -217,7 +217,7 @@ export const editComment = ({postId, commentId, text}:commentProps, dispatch:any
         .catch((err) => console.log(err))
 }
 
-export const deleteComment = ({postId, commentId}:commentProps, dispatch:any) => {
+export const deleteComment = (postId:string ,commentId:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,

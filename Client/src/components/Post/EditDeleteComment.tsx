@@ -26,14 +26,14 @@ export const EditDeleteComment = (props: props) => {
     e.preventDefault()
 
     if (commentText) {
-        dispatch(editComment(props.postId, props._id, commentText))
+        editComment(props.postId, props._id, commentText, dispatch)
         setCommentText("")
         setEdit(false)
     }
 }
 
   const handleDelete = () => {
-      dispatch(deleteComment(postId, props._id))
+      deleteComment(props.postId, props._id, dispatch)
   }
 
   useEffect(()=> {
