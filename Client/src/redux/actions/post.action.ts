@@ -108,7 +108,7 @@ export const findPostInteresting = ({postId,userId}: postProps, dispatch:any) =>
         .catch((err) => console.log(err))
 }
 
-export const findPostConstructive = ({postId,userId}: postProps, dispatch:any) => {
+export const findPostConstructive = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-constructive/` + postId,
@@ -156,7 +156,7 @@ export const interestingAnymore = ({postId,userId}: postProps, dispatch:any) => 
         .catch((err) => console.log(err))
 }
 
-export const constructiveAnymore = ({postId,userId}: postProps, dispatch:any) => {
+export const constructiveAnymore = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-constructive-anymore/` + postId,

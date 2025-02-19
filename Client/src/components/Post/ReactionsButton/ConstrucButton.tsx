@@ -11,11 +11,11 @@ export const ConstrucButton = (postProps:any) => {
     const dispatch = useDispatch()
 
     const findConstructive = () => {
-        dispatch(findPostConstructive(postProps._id, uid))
+        findPostConstructive(postProps._id, uid, dispatch)
         setConstructive(true)
     }
     const findConstructiveAnymore = () => {
-        dispatch(constructiveAnymore(postProps._id, uid))
+        constructiveAnymore(postProps._id, uid, dispatch)
         setConstructive(false)
     }
 
