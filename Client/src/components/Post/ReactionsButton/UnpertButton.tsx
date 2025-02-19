@@ -11,11 +11,11 @@ export const UnpertButton = (postProps:any) => {
     const dispatch = useDispatch()
 
     const findUnpertinent = () => {
-        dispatch(findPostUnpertinent(postProps._id, uid))
+        findPostUnpertinent(postProps._id, uid, dispatch)
         setUnpertinent(true)
     }
     const findUnpertinentAnymore = () => {
-        dispatch(unpertinentAnymore(postProps._id, uid))
+        unpertinentAnymore(postProps._id, uid, dispatch)
         setUnpertinent(false)
     }
 
