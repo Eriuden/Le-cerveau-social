@@ -42,7 +42,7 @@ export const PostCard = ( postProps: postPropsType ) => {
 
   const updateItem = () => {
     if (textUpdate) {
-      dispatch(updatePost(postProps._id, textUpdate));
+      updatePost(postProps._id, textUpdate, dispatch);
     }
     setIsUpdated(false);
   };

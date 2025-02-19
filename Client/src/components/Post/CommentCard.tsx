@@ -19,8 +19,8 @@ export const CardComment = ( post:any) => {
     e.prevenDefault();
 
     if (text) {
-      dispatch(addComment(post._id, userData._id, text, userData.pseudo))
-        .then(() => dispatch(getPosts()))
+      addComment(post._id, userData, dispatch)
+        .then(() => getPosts(post, dispatch))
         .then(() => setText(""));
     }
   };

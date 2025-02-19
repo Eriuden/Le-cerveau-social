@@ -193,7 +193,7 @@ export const unpertinentAnymore = ({postId,userId}: postProps, dispatch:any) => 
 }
 
 
-export const addComment = ({postId, commenterId, text, commenterName}: commentProps, dispatch:any) => {
+export const addComment = (postId: string , {commenterId, text, commenterName}: commentProps, dispatch:any) => {
         return axios({
             method: 'patch',
             url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
