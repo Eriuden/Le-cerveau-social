@@ -11,11 +11,11 @@ export const IntButton = (postProps:any) => {
     const dispatch = useDispatch()
 
     const findInteresting = () => {
-        dispatch(findPostInteresting(postProps._id, uid))
+        findPostInteresting(postProps._id, uid, dispatch)
         setInteresting(true)
     }
     const findInterestingAnymore = () => {
-        dispatch(interestingAnymore(postProps._id, uid))
+        interestingAnymore(postProps._id, uid, dispatch)
         setInteresting(false)
     }
 

@@ -11,11 +11,11 @@ export const FunnyButton = (postProps:any) => {
     const dispatch = useDispatch()
 
     const findFunny = () => {
-        dispatch(findPostFunny(postProps._id, uid))
+        findPostFunny(postProps._id, uid, dispatch)
         setFunny(true)
     }
     const findFunnyAnymore = () => {
-        dispatch(funnyAnymore(postProps._id, uid))
+        funnyAnymore(postProps._id, uid, dispatch)
         setFunny(false)
     }
 

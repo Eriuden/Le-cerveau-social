@@ -96,7 +96,7 @@ export const deletePost = ({postId, message}: postProps, dispatch:any) => {
         .catch((err) => console.log(err))
 }
 
-export const findPostInteresting = ({postId,userId}: postProps, dispatch:any) => {
+export const findPostInteresting = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-interesting/` + postId,
@@ -120,7 +120,7 @@ export const findPostConstructive = (postId:string,userId:string, dispatch:any) 
         .catch((err) => console.log(err))
 }
 
-export const findPostFunny = ({postId,userId}: postProps, dispatch:any) => {
+export const findPostFunny = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-funny/` + postId,
@@ -132,7 +132,7 @@ export const findPostFunny = ({postId,userId}: postProps, dispatch:any) => {
         .catch((err) => console.log(err))
 }
 
-export const findPostUnpertinent = ({postId,userId}: postProps, dispatch:any) => {
+export const findPostUnpertinent = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method: 'patch',
             url:`${process.env.REACT_APP_API_URL}/api/post/find-post-unpertinent/` + postId,
@@ -144,7 +144,7 @@ export const findPostUnpertinent = ({postId,userId}: postProps, dispatch:any) =>
         .catch((err) => console.log(err))
 }
 
-export const interestingAnymore = ({postId,userId}: postProps, dispatch:any) => {
+export const interestingAnymore = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-interesting-anymore/` + postId,
@@ -168,7 +168,7 @@ export const constructiveAnymore = (postId:string,userId:string, dispatch:any) =
         .catch((err) => console.log(err))
 }
 
-export const funnyAnymore = ({postId,userId}: postProps, dispatch:any) => {
+export const funnyAnymore = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-funny-anymore/` + postId,
@@ -180,7 +180,7 @@ export const funnyAnymore = ({postId,userId}: postProps, dispatch:any) => {
         .catch((err) => console.log(err))
 }
 
-export const unpertinentAnymore = ({postId,userId}: postProps, dispatch:any) => {
+export const unpertinentAnymore = (postId:string,userId:string, dispatch:any) => {
         return axios({
             method:'patch',
             url: `${process.env.REACT_APP_API_URL}/api/post/not-unpertinent-anymore/` + postId,
