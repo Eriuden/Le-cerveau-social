@@ -2,16 +2,15 @@ import { useDispatch } from 'react-redux'
 import { deletePost } from '../../redux/actions/post.action'
 
 type propsType = {
-    _id: string,
+    id: string,
     postId: string,
     commenterId: string,
     text: string
   }
 
-
 export default function DeletePostCard(props:propsType) {
   const dispatch = useDispatch()
-  const deleteQuote = () => deletePost(props._id, dispatch)
+  const deleteQuote = () => deletePost(props.id, dispatch)
   return (
     <div 
       onClick={() => {
