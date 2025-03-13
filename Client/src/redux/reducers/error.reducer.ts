@@ -1,13 +1,13 @@
-import { GET_POST_ERRORS } from "../actions/post.action";
+import { GET_COUNCIL_ERRORS } from "../actions/council.action";
 import { GET_USER_ERRORS } from "../actions/user.action";
 
-const initialState = {userError : [], articleError : []}
+const initialState = {userError : [], councilError : []}
 
 export const errorReducer = (state = initialState, action:any) => {
     switch (action.type) {
-        case GET_POST_ERRORS:
+        case GET_COUNCIL_ERRORS:
             return {
-                articleError: action.payload
+                councilError: action.payload
             }
         case GET_USER_ERRORS:
             return {
