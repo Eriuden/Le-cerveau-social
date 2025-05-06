@@ -11,7 +11,7 @@ import {CardComment} from "../Post/CommentCard"
 import { dateParser, isEmpty } from "../Utils";
 
 type postPropsType = {
-  _id: string,
+  _id: Number,
   posterId: string,
   picture: string,
   message: string,

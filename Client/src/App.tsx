@@ -38,7 +38,6 @@ function App() {
   return (
     <>
       <div>         
-        Test
         <Header />
         <Routes>
           <Route path="/" element={<Home/>}/>

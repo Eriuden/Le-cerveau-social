@@ -24,7 +24,7 @@ export const GET_TRENDS = "GET_TRENDS"
 export const GET_POST_ERRORS = "GET_POST_ERRORS"
 
 type postProps = {
-    postId: string,
+    postId: String,
     picture: string,
     message: string,
     video: string,
@@ -72,7 +72,7 @@ export const addPost = (data:any, dispatch:any) => {
         })
 }
 
-export const updatePost = ({postId} : postProps, updatedMessage: string, dispatch:any) => {   
+export const updatePost = (postId:String, updatedMessage: string, dispatch:any) => {   
         return axios({
             method: 'put',
             url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
