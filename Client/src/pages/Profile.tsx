@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { UidContext } from '../components/AppContext'
 import UpdateProfil from "../components/Profile/UpdateProfile"
 
-export default function Profil() {
+export default function Profile() {
   const uid = useContext(UidContext)
   return (
     <div className='profil-page'>

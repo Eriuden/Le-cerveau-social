@@ -26,7 +26,7 @@ export default function FollowHandler( idToFollow:string, idToUnfollow: string, 
         setIsFollowed(true)
       } else setIsFollowed(false)
     }
-  }, [userData], idToFollow)
+  }, [userData])
   
   return (
 

@@ -1,9 +1,9 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Profile } from './pages/Profile'
-import { Trending } from './pages/Trending'
-import { Home }  from './pages/Home'
+import Profile from './pages/Profile'
+import Trending from './pages/Trending'
+import Home from './pages/Home'
 import Header from './components/Header'
 import axios  from 'axios'
 import { useDispatch } from 'react-redux'
@@ -32,7 +32,7 @@ function App() {
     }
     fetchToken()
 
-    if (uid) dispatch(getUser(uid))
+    if (uid) getUser(uid, dispatch)
   }, [uid])
 
   return (
