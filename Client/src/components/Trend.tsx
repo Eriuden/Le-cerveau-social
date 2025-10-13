@@ -20,7 +20,7 @@ export default function Trends() {
       });
       sortedArray.length = 3;
       console.log(sortedArray);
-      dispatch(getTrends(sortedArray));
+      getTrends(sortedArray, dispatch);
     }
   }, [posts, dispatch]);
   return (

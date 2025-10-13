@@ -16,7 +16,19 @@ export default function Trending() {
       <div className="main">
         <ul>
           {!isEmpty(trendList[0]) &&
-            trendList.map((post:any) => <PostCard postProps={post} key={post._id} />)}
+            trendList.map((post:any) => <PostCard
+            _id = {post._id} 
+            posterId = {post.posterId}
+            picture = {post.picture}
+            message={post.message}
+            video= {post.video}
+            interesting= {post.interesting}
+            constructive= {post.constructive}
+            funny={post.funny}
+            unpertinent= {post.unpertinent}
+            createdAt= {post.createdAt}
+            comments= {post.comment}
+            key={post._id} />)}
         </ul>
       </div>
       <div className="right-side">
