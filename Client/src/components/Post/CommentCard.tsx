@@ -55,13 +55,16 @@ export const CardComment = ( post:any) => {
                 <div className="pseudo">
                   <h3>{comment.commenterPseudo}</h3>
                   {comment.commenterId !== userData._id && (
-                    <FollowHandler idToFollow={comment.commenterId} />
+                    <FollowHandler idToFollow={comment.commenterId} idToUnfollow={comment.commenterId} />
                   )}
                 </div>
                 <span>{timeStampParser(comment.timeStamp)}</span>
               </div>
               <p>{comment.text}</p>
-              <EditDeleteComment props={comment} postId={post._id} />
+              <EditDeleteComment _id={post._id}
+              commenterId={post.commenterId}
+              text={post.text}
+              postId={post._id} />
             </div>
           </div>
         );
