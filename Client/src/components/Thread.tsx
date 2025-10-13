@@ -37,7 +37,19 @@ export default function Thread() {
       <ul>
         {!isEmpty(posts[0]) &&
           posts.map((post:any) => {
-            return <PostCard postProps={post} key={post._id} />;
+            return <PostCard
+            _id={post._id}
+            posterId={post.posterId}
+            picture={post.picture}
+            message={post.message}
+            video={post.video}
+            interesting={post.interesting}
+            constructive={post.constructive}
+            funny={post.funny}
+            unpertinent={post.unpertinent}
+            createdAt={posts.createdAt}
+            comments={ post.comment} 
+            key={post._id} />;
           })}
       </ul>
     </div>
