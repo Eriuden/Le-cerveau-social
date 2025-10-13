@@ -84,7 +84,7 @@ export const PostCard = ( postProps: postPropsType ) => {
                       .join("")}
                 </h3>
                 {postProps.posterId !== userData._id && (
-                  <FollowHandler idToFollow={postProps.posterId} idToUnfolow={postProps.posterId} type={"card"} />
+                  <FollowHandler idToFollow={postProps.posterId} idToUnfollow={postProps.posterId} type={"card"} />
                 )}
               </div>
               <span>{dateParser(postProps.createdAt)}</span>
@@ -131,7 +131,7 @@ export const PostCard = ( postProps: postPropsType ) => {
                   <div onClick={() => setIsUpdated(!isUpdated)}>
                     <img src="./img/icons/edit.svg" alt="edit" />
                   </div>
-                  <DeletePostCard {...postProps} />
+                  <DeletePostCard id={postProps._id} text={postProps.message} />
                 </div>
               )
             }
