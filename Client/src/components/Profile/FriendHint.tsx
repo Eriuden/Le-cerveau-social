@@ -56,10 +56,7 @@ export default function FriendHint() {
                     <li className="user-hint" key={user}>
                       <img src={usersData[i].pictures} alt="user-pictures" />
                       <p>{usersData[i].pseudo}</p>
-                      <FollowHandler
-                        idToFollow={`${usersData[i]._id}`}
-                        type={"suggestion"}
-                      />
+                      <FollowHandler idToFollow={user.userId} idToUnfollow={user.userId} type={"suggestion"} />
                     </li>
                   );
                 }
