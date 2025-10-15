@@ -39,7 +39,7 @@ export default function NewPostForm(post: any) {
 
     const handlevideo = () => {
         let findLink = message.split(" ")
-        for(let i =0; i< findLink; i++) {
+        for(let i =0; i < findLink.length; i++) {
             if(findLink[i].includes('https://www.yout') || findLink[i].includes('https://yout') ) {
                 let embed = findLink[i].replace('watch?v=', "embed/")
                 setVideo(embed.split('&')[0])
