@@ -43,6 +43,7 @@ app.get("jwtid", requireAuth, (res) => {
 app.use("api/user", userRoute)
 app.use("api/post", postRoute)
 app.use("api/council", councilRoute)
+app.use('/api/messages', messageRoutes)
 
 app.listen(process.env.PORT, ()=> {
     console.log(`Nous pouvons nous installer en place ${process.env.PORT}`)
