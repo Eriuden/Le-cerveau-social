@@ -1,19 +1,30 @@
 
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Document, model } from 'mongoose';
+
+export interface IConversation extends Document {
+  participants : Schema.Types.ObjectId,
+  lastMessage : Schema.Types.ObjectId,
+  lastMessageAt : Date
+}
+
+export interface IMessage extends Document {
+  conversation : Schema.Types.ObjectId,
+  sender : Schema.Types.ObjectId,
+  content : string,
+  read : Boolean,
+  readAt : Date
+}
 
 const conversationSchema = new Schema(
   {
     participants: [{
-      type: Schema.Types.ObjectId,
       ref: 'User',
       required: true
     }],
     lastMessage: {
-      type: Schema.Types.ObjectId,
       ref: 'Message'
     },
     lastMessageAt: {
-      type: Date,
       default: Date.now
     }
   },
@@ -27,31 +38,24 @@ conversationSchema.index({ lastMessageAt: -1 });
 
 export const Conversation = mongoose.model('Conversation', conversationSchema);
 
-
-
 const messageSchema = new Schema(
   {
     conversation: {
-      type: Schema.Types.ObjectId,
       ref: 'Conversation',
       required: true
     },
     sender: {
-      type: Schema.Types.ObjectId,
       ref: 'User',
       required: true
     },
     content: {
-      type: String,
       required: true,
       trim: true
     },
     read: {
-      type: Boolean,
       default: false
     },
     readAt: {
-      type: Date
     }
   },
   {
